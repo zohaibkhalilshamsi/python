@@ -1,0 +1,45 @@
+import random
+
+def get_question():
+    
+    questions = {
+        "What is the capital of France?": "Paris",
+        "Which planet is known as the Red Planet?": "Mars",
+        "Who wrote 'Romeo and Juliet'?": "William Shakespeare",
+        "What is the largest mammal in the world?": "Blue Whale",
+        "What is the powerhouse of the cell?": "Mitochondria"
+    }
+
+    
+    question = random.choice(list(questions.keys()))
+    correct_answer = questions[question]
+    return question, correct_answer
+
+def ask_question():
+    question, correct_answer = get_question()
+    print("\nQuestion: ", question)
+
+    user_answer = input("Your answer: ").strip()
+
+    if user_answer.lower() == correct_answer.lower():
+        print("Correct! Well done.")
+        return True
+    else:
+        print(f"Wrong! The correct answer is: {correct_answer}")
+        return False
+
+def quiz():
+    print("Welcome to the Quiz Game!")
+
+    score = 0
+    num_questions = 5  # You can adjust the number of questions
+
+    for _ in range(num_questions):
+        if ask_question():
+            score += 1
+
+    print("\nQuiz completed!")
+    print(f"Your score: {score}/{num_questions}")
+
+if _name_ == "_main_":
+    quiz()
